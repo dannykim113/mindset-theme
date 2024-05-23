@@ -28,6 +28,18 @@ get_header();
 				comments_template();
 			endif;
 
+			if ( function_exists( 'get_field' ) ) {
+				if ( get_field( 'address' ) ) {
+					the_field( 'address' );
+				}
+				if ( get_field( 'email' ) ) {
+					$email = get_field( 'email' );
+					$mailto = 'mailto:' . $email;
+					?>
+					<p><a href="<?php echo esc_url( $mailto ); ?> "><?php echo esc_html( $email ); ?></a></p>
+					<?php
+				}
+			}
 		endwhile; // End of the loop.
 		?>
 

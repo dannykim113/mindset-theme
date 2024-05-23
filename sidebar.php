@@ -10,12 +10,21 @@
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }
-if ( is_page() ) {
-    dynamic_sidebar('sidebar-2');
-}
+// if ( is_page() ) {
+//     dynamic_sidebar('sidebar-2');
+// }
 
 ?>
 
 <aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+	<?php
+	if ( is_page() ) {
+		dynamic_sidebar( 'sidebar-1' );
+	} else {
+		dynamic_sidebar( 'sidebar-2' );
+	}
+	
+	?>
+	<?php get_template_part( 'template-parts/work-categories' ); ?>
+	
 </aside><!-- #secondary -->
